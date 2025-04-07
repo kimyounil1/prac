@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body { overflow: hidden;}
+        #followMouse { transition: transform 1s linear;}
+    </style>
+</head>
+
+<body>
+    <div>
+        <b>innerWidth 미사용:</b> 웹 브라이저 창을 양옆으로늘리거나 줄여도 폰트의 크기가 변하지 않음</div>
+        <div class="flex_font" id="resizeFont"><b>innerWidth 사용:</b>
+        웹 브라이저 창을 양옆으로 늘리거나 줄이면 창크기에 따라 폰트의의 크기가 변함함</div>
+    <script>
+        function adjustFont(){
+            const width = window.innerWidth;
+            const divBox = document.getElementById("resizeFont");
+            if(width <= 700 && width > 600)divBox.style.fontSize = '16px';
+            else if(width <= 600 && width > 500)divBox.style.fontSize = '12px';
+            else divBox.style.fontSize = '20px';
+        }
+        adjustFont();
+        window.addEventListener("resize", adjustFont);
+    </script>
+</body>
+
+</html>

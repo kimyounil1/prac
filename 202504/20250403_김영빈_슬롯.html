@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .slot {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 20px;
+        }
+    </style>
+</head>
+<!-- 
+3개의 슬롯에서 🍀 ⭐ ⛄ 💘 🐬가 무작위로 돌아감
+3개가 같으면 "잭팟!", 2개는 "2개 맞았음", 나머지는 "꽝!"
+ -->
+
+<body>
+    슬롯 머신 만들기
+    <p id="icon1" class="slot" style="font-size: 20px;">🍀</p>
+    <p id="icon2" class="slot" style="font-size: 20px;">⭐</p>
+    <p id="icon3" class="slot" style="font-size: 20px;">⛄</p>
+    <p style="display: flex;justify-content: center;"><button type="button" onclick="gameStart()">돌리기</button></p>
+    <p id="result" style="text-align: center;"></p>
+    <script>
+        const symbols = ["🍀", "⭐", "⛄", "💘", "🐬"];
+        function getRandomSymbol() {
+            return symbols[Math.floor(Math.random() * symbols.length)];
+        }
+        function checkResult() {
+            const icon1 = document.getElementById("icon1").innerHTML;
+            const icon2 = document.getElementById("icon2").innerHTML;
+            const icon3 = document.getElementById("icon3").innerHTML;
+            const result = document.getElementById("result");
+
+            if (icon1 === icon2 && icon2 === icon3) {
+                result.innerHTML = "잭팟!";
+            } else if (icon1 === icon2 || icon1 === icon3 || icon2 === icon3) {
+                result.innerHTML = "2개 맞았음";
+            } else {
+                result.innerHTML = "꽝!";
+            }
+        }
+        function gameStart() {
+            let time = setInterval(() => {
+                document.getElementById("icon1").innerHTML = getRandomSymbol();
+                document.getElementById("icon2").innerHTML = getRandomSymbol();
+                document.getElementById("icon3").innerHTML = getRandomSymbol();
+            }, 100);
+            setTimeout(() => {
+                clearInterval(time);
+                checkResult();
+            }, 4000);
+        }
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body { overflow: hidden;}
+        #followMouse { transition: transform 1s linear;}
+    </style>
+</head>
+
+<body>
+    <div>
+        <h2>url 조작작</h2>
+        <button onclick="goToNewPage()">Go to New Page</button>
+
+    <script>
+        document.write(location.protocol + "//" + location.hostname + location.pathname + "<br>" + location.port);
+        function goToNewPage() {
+
+            location.href = `https://www.daum.net`; // Replace with your desired URL
+        }
+    </script>
+</body>
+
+</html>

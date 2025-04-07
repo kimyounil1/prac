@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body { overflow: hidden;}
+        #followMouse { transition: transform 1s linear;}
+    </style>
+</head>
+
+<body>
+    <div>
+    <form id="myform">
+        <label for="message">입력하세요.</label>
+        <input type="text" id="message" name="message" value="">
+        <br>
+        <button type="submit">전송</button>
+        <button type="reset">초기화</button>
+    </form>
+    </div>
+    <div id="result"></div>
+    <script>
+        let form = document.getElementById("myform");
+        let result = document.getElementById("result");
+        form.addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent the form from submitting normally
+            let message = document.getElementById("message").value;
+            result.innerHTML = "입력한 메시지: " + message;
+        });
+        form.addEventListener("reset", function(event) {
+            result.innerHTML = "Form reset"; // Clear the result when the form is reset
+        });
+
+    </script>
+</body>
+
+</html>
